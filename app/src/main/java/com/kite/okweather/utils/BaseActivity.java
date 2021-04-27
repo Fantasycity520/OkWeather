@@ -13,8 +13,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             switch (v.getId()) {
             case :
                 break;
-            case :
-                break;
             default:
                 break;
             }

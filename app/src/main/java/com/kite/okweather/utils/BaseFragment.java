@@ -21,6 +21,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(initLayout(), container, false);
         initView(rootView);
+        title();
         initSp();
         initData();
         return rootView;
@@ -49,6 +50,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
      * 初始化、SharedPreferences
      */
     protected abstract void initSp();
+
+    protected abstract void title();
 
 
 }
