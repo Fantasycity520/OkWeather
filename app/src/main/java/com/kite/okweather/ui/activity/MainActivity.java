@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        Utils.log("ss");
     }
 
     @Override
