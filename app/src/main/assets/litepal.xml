@@ -6,9 +6,11 @@
     <version value="1" />
 
     <list>
-        <mapping class="com.kite.okweather.db.Province" />
-        <mapping class="com.kite.okweather.db.City" />
-        <mapping class="com.kite.okweather.db.County" />
+        <mapping class="com.kite.okweather.beans.Db_Bean_3Day" />
+        <mapping class="com.kite.okweather.beans.Db_Bean_7Day" />
+        <mapping class="com.kite.okweather.beans.Db_Bean_City" />
+        <mapping class="com.kite.okweather.beans.Db_Bean_Hours" />
+        <mapping class="com.kite.okweather.beans.Db_Bean_Now" />
     </list>
 
 </litepal>

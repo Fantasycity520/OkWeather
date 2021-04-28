@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.kite.okweather.R;
 import com.kite.okweather.utils.BaseFragment;
+import com.kite.okweather.utils.Utils;
 
 public class Fg_02 extends BaseFragment {
     @Override
@@ -13,7 +14,6 @@ public class Fg_02 extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-
     }
 
     @Override
