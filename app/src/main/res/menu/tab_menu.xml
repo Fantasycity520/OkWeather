@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_one"
+        android:icon="@drawable/home_01"
+        android:title="首页" />
+
+    <item
+        android:id="@+id/tab_two"
+        android:icon="@drawable/home_02"
+        android:title="2" />
+
+    <item
+        android:id="@+id/tab_three"
+        android:icon="@drawable/home_01"
+        android:title="3" />
+
+    <item
+        android:id="@+id/tab_four"
+        android:icon="@drawable/home_02"
+        android:title="4" />
+</menu>

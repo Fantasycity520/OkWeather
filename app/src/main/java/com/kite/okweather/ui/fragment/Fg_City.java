@@ -1,18 +1,64 @@
 package com.kite.okweather.ui.fragment;
 
+import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kite.okweather.R;
+import com.kite.okweather.ui.adapter.CityAdapter;
 import com.kite.okweather.utils.BaseFragment;
 import com.kite.okweather.utils.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Fg_City extends BaseFragment {
+
+    RecyclerView rv_vity;
+    ImageView title_city_city, im_title_location;
+    EditText ed_title;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getFocus();
+    }
+
+    //监听返回
+    private void getFocus() {
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    // 监听到返回按钮点击事件
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_main, new Fg_Main()).commit();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+    }
 
     @Override
     protected int initLayout() {
@@ -21,12 +67,19 @@ public class Fg_City extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-
+        rv_vity = view.findViewById(R.id.rv_vity);
+        title_city_city = view.findViewById(R.id.title_city_city);
+        ed_title = view.findViewById(R.id.ed_title);
+        im_title_location = view.findViewById(R.id.im_title_location);
+        im_title_location.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-
+        List<String> list = new ArrayList<>();
+        CityAdapter cityAdapter = new CityAdapter(list);
+        rv_vity.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rv_vity.setAdapter(cityAdapter);
     }
 
     @Override
@@ -36,20 +89,10 @@ public class Fg_City extends BaseFragment {
 
     @Override
     protected void title() {
-        LinearLayout ll_ed_title, ll_title_location;
-        ll_ed_title = getActivity().findViewById(R.id.ll_ed_title);
-        ll_ed_title.setVisibility(View.VISIBLE);
-        ll_title_location = getActivity().findViewById(R.id.ll_title_location);
-        ll_title_location.setVisibility(View.VISIBLE);
+        BottomNavigationView main_bottom = getActivity().findViewById(R.id.main_bottom);
+        main_bottom.setVisibility(View.GONE);
 
-        ImageView title_city = getActivity().findViewById(R.id.title_city);
-        title_city.setImageResource(R.drawable.title_return);
-        title_city.setOnClickListener(this);
-
-        ImageView title_location = getActivity().findViewById(R.id.title_location);
-        title_location.setOnClickListener(this);
-
-        EditText ed_title = getActivity().findViewById(R.id.ed_title);
+        title_city_city.setOnClickListener(this);
         ed_title.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -64,15 +107,16 @@ public class Fg_City extends BaseFragment {
                 return false;
             }
         });
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.title_city:
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fg_main, new Fg_Main()).commit();
+            case R.id.title_city_city:
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_main, new Fg_Main()).commit();
                 break;
-            case R.id.title_location:
+            case R.id.im_title_location:
                 Utils.toast("定位");
                 break;
             default:

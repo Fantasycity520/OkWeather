@@ -20,10 +20,10 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(initLayout(), container, false);
-        initView(rootView);
-        title();
         initSp();
+        initView(rootView);
         initData();
+        title();
         return rootView;
     }
 

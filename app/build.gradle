@@ -43,6 +43,12 @@ dependencies {
     //下拉刷新
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
+    //卡片布局
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    //design ui 库
+    implementation 'com.google.android.material:material:1.0.0-rc01'
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
