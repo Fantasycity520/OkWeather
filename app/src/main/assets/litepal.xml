@@ -11,6 +11,9 @@
         <mapping class="com.kite.okweather.beans.Db_Bean_City" />
         <mapping class="com.kite.okweather.beans.Db_Bean_Hours" />
         <mapping class="com.kite.okweather.beans.Db_Bean_Now" />
+        <mapping class="com.kite.okweather.beans.Db_Bean_City_List" />
+        <mapping class="com.kite.okweather.beans.Db_Bean_My_City_List" />
+        <mapping class="com.kite.okweather.beans.Db_City" />
     </list>
 
 </litepal>

@@ -3,37 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BFFF"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/llayout_main"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="15dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <ImageView
-            android:id="@+id/title_city"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/title_01"
+            android:id="@+id/bing_pic_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             tools:ignore="ContentDescription" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llayout_main"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp">
 
-    <!--            主页面-->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager_main"
-        android:layout_width="match_parent"
-        android:layout_weight="15"
-        android:layout_height="0dp"
-        android:flipInterval="30"
-        android:orientation="horizontal"
-        android:persistentDrawingCache="animation">
+            <ImageView
+                android:id="@+id/title_city"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/title_01"
+                tools:ignore="ContentDescription" />
 
-    </androidx.viewpager2.widget.ViewPager2>
+        </LinearLayout>
+
+        <!--            主页面-->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="45dp"
+            android:flipInterval="30"
+            android:orientation="horizontal"
+            android:persistentDrawingCache="animation">
+
+        </androidx.viewpager2.widget.ViewPager2>
+
+    </FrameLayout>
 
 
 </LinearLayout>

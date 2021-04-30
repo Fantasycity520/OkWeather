@@ -5,29 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="UselessLeaf">
 
-        <LinearLayout
+
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:ignore="ScrollViewSize">
+            tools:ignore="UselessLeaf">
 
-
-
-            <TextView
-                android:id="@+id/tv_test"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="1"
-                android:textSize="30sp" />
+                android:orientation="vertical"
+                tools:ignore="ScrollViewSize">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_test"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#fff"
+                    android:textSize="30sp" />
 
-    </ScrollView>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </FrameLayout>
+
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

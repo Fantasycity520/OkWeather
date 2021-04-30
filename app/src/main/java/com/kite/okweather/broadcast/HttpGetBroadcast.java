@@ -11,7 +11,7 @@ public class HttpGetBroadcast extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Utils.toast("数据请求完成");
+        //Utils.toast("数据请求完成");
         new Fg_01().showData();
     }
 }

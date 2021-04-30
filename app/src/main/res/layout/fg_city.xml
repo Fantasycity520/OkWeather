@@ -19,9 +19,9 @@
         <ImageView
             android:id="@+id/title_city_city"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:src="@drawable/title_return"
             tools:ignore="ContentDescription" />
 
@@ -37,11 +37,21 @@
             android:hint="请输入城市" />
 
         <ImageView
+            android:id="@+id/im_title_add"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center_vertical"
+            android:layout_weight="1.5"
+            android:src="@drawable/add"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+
+        <ImageView
+            android:layout_marginLeft="10dp"
             android:id="@+id/im_title_location"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
             android:layout_gravity="right|center_vertical"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:src="@drawable/title_location"
             tools:ignore="ContentDescription,RtlHardcoded" />
 

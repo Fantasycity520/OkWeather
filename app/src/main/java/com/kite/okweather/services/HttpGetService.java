@@ -17,29 +17,34 @@ import com.kite.okweather.utils.Utils;
 public class HttpGetService extends Service {
 
     private HttpGetBinder mBinder = new HttpGetBinder();
+    static String data = "";
 
     public class HttpGetBinder extends Binder {
-        public void startGet() {
-            getHttp();
-            Utils.log("MyService" + "star");
+        public void startGet(String data) {
+            getHttp(data);
+            Utils.log("MyService" + "star" + data);
         }
 
         public int getProgress() {
             Utils.log("MyService" + "getProgress");
             return 0;
         }
-        public void d(){
-            onDestroy();
-        }
+
     }
 
-    private void getHttp() {
-        HttpWeatherGet.HttpGetNow(new Main(), "101010100");
-        HttpWeatherGet.HttpGet3Day(new Main(), "101010100");
-        HttpWeatherGet.HttpGet7Day(new Main(), "101010100");
-        HttpWeatherGet.HttpGetCity(new Main(), "101010100");
-        HttpWeatherGet.HttpGetHours(new Main(), "101010100");
+    private void getHttp(String data) {
+        HttpWeatherGet.HttpGetNow(new Main(), data);
+        HttpWeatherGet.HttpGet3Day(new Main(), data);
+        HttpWeatherGet.HttpGet7Day(new Main(), data);
+        HttpWeatherGet.HttpGetCity(new Main(), data);
+        HttpWeatherGet.HttpGetHours(new Main(), data);
+    }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        data = intent.getStringExtra("city");
+        getHttp(data);
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Nullable

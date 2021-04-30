@@ -1,17 +1,21 @@
 package com.kite.okweather.ui.fragment;
 
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kite.okweather.R;
+import com.kite.okweather.beans.Db_Bean_My_City_List;
 import com.kite.okweather.ui.adapter.Adapter_ViewPager2;
+import com.kite.okweather.utils.ActivityCollector;
 import com.kite.okweather.utils.BaseFragment;
 import com.kite.okweather.utils.Utils;
 
@@ -23,6 +27,48 @@ public class Fg_Main extends BaseFragment {
     BottomNavigationView main_bottom;
     ViewPager2 viewpager_main;
     ImageView title_city;
+    Db_Bean_My_City_List db_bean_my_city;
+    ImageView bing_pic_img;
+
+    public Fg_Main(Db_Bean_My_City_List db_bean_my_city) {
+        this.db_bean_my_city = db_bean_my_city;
+    }
+    public Fg_Main() {
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getFocus();
+    }
+
+    //监听返回
+    int i = 0;
+
+    private void getFocus() {
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    // 监听到返回按钮点击事件
+                    //ActivityCollector.finishAll();
+                    if (i == 0) {
+                        Utils.toast("再次点击返回");
+                    }
+                    if (i >= 1) {
+                        Log.d(TAG, "onKey: " + i);
+                        ActivityCollector.finishAll();
+                    }
+                    i++;
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
 
     @Override
     protected int initLayout() {
@@ -35,6 +81,9 @@ public class Fg_Main extends BaseFragment {
         title_city.setOnClickListener(this);
         view_pager(view);
         bottom();
+        bing_pic_img = view.findViewById(R.id.bing_pic_img);
+        bing_pic_img.setImageAlpha(230);
+        loadBingPic();
     }
 
     @Override
@@ -63,14 +112,18 @@ public class Fg_Main extends BaseFragment {
                 break;
         }
     }
+    private void loadBingPic() {
+        String reques_Bing = "https://www.talklee.com/api/bing/";
+        String reques_Bing2 = "http://fly.atlinker.cn/api/bing/1920-cn.php";
 
+        Glide.with(getActivity()).load(reques_Bing2).into(bing_pic_img);
+
+    }
     private void view_pager(View view) {
         viewpager_main = view.findViewById(R.id.viewpager_main);
         List<Fragment> list = new ArrayList<>();
-        list.add(new Fg_01());
+        list.add(new Fg_01(db_bean_my_city));
         list.add(new Fg_02());
-        list.add(new Fg_03());
-        list.add(new Fg_04());
         Adapter_ViewPager2 adapter_viewPager2 = new Adapter_ViewPager2(getActivity().getSupportFragmentManager(), getLifecycle(), list);
         viewpager_main.setAdapter(adapter_viewPager2);
         // ViewPager2 滑动事件监听
@@ -114,14 +167,6 @@ public class Fg_Main extends BaseFragment {
                     case R.id.tab_two:
                         viewpager_main.setCurrentItem(1);
                         main_bottom.getMenu().getItem(1).setChecked(true);
-                        break;
-                    case R.id.tab_three:
-                        viewpager_main.setCurrentItem(2);
-                        main_bottom.getMenu().getItem(2).setChecked(true);
-                        break;
-                    case R.id.tab_four:
-                        viewpager_main.setCurrentItem(3);
-                        main_bottom.getMenu().getItem(3).setChecked(true);
                         break;
                     default:
                         break;

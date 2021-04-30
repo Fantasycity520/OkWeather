@@ -21,4 +21,12 @@ public class Db_Bean_City extends LitePalSupport {
     public void setCity(String city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return "Db_Bean_City{" +
+                "id=" + id +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

@@ -7,16 +7,7 @@
 
     <item
         android:id="@+id/tab_two"
-        android:icon="@drawable/home_02"
-        android:title="2" />
+        android:icon="@drawable/my"
+        android:title="我的" />
 
-    <item
-        android:id="@+id/tab_three"
-        android:icon="@drawable/home_01"
-        android:title="3" />
-
-    <item
-        android:id="@+id/tab_four"
-        android:icon="@drawable/home_02"
-        android:title="4" />
 </menu>

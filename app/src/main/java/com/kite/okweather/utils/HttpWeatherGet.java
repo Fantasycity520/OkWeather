@@ -6,6 +6,7 @@ import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.kite.okweather.beans.Db_Bean_My_City_List;
 import com.kite.okweather.beans.Weather_Bean_3Day;
 import com.kite.okweather.beans.Weather_Bean_7Day;
 import com.kite.okweather.beans.Weather_Bean_City;
@@ -14,7 +15,12 @@ import com.kite.okweather.beans.Weather_Bean_Now;
 import com.kite.okweather.db.SaveWeather;
 import com.kite.okweather.ui.activity.Main;
 
+import org.litepal.LitePal;
+
+import java.util.List;
+
 public class HttpWeatherGet {
+
 
     public static void HttpGetNow(AppCompatActivity activity, String location) {
         Thread thread = new Thread(new Runnable() {
@@ -29,7 +35,7 @@ public class HttpWeatherGet {
                         if (now.getCode().equals("200")) {
                             //Utils.log("实时天气:\t" + now.getNow().toString());
                             //Utils.toast("成功");
-                            new SaveWeather(new Main(),s).saveWeather_Now_Data();
+                            new SaveWeather(new Main(), s).saveWeather_Now_Data();
                         } else {
                             Utils.log(now.getCode());
                             Utils.toast("失败");
@@ -147,4 +153,17 @@ public class HttpWeatherGet {
         thread.start();
     }
 
+    /**
+     * 把当前点击的item 置顶
+     *
+     * @param position
+     */
+    public static void itemToTop(int position) {
+        List<Db_Bean_My_City_List> lists = LitePal.findAll(Db_Bean_My_City_List.class);
+        Db_Bean_My_City_List city_1 = lists.get(0);
+        Db_Bean_My_City_List city_item = lists.get(position);
+
+        city_item.updateAll("id = 1");
+        city_1.updateAll("id = " + (position + 1));
+    }
 }
