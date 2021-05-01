@@ -9,8 +9,10 @@ import com.google.gson.Gson;
 import com.kite.okweather.beans.Db_Bean_My_City_List;
 import com.kite.okweather.beans.Weather_Bean_3Day;
 import com.kite.okweather.beans.Weather_Bean_7Day;
+import com.kite.okweather.beans.Weather_Bean_Aqi;
 import com.kite.okweather.beans.Weather_Bean_City;
 import com.kite.okweather.beans.Weather_Bean_Hours;
+import com.kite.okweather.beans.Weather_Bean_Live;
 import com.kite.okweather.beans.Weather_Bean_Now;
 import com.kite.okweather.db.SaveWeather;
 import com.kite.okweather.ui.activity.Main;
@@ -32,7 +34,7 @@ public class HttpWeatherGet {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (now.getCode().equals("200")) {
+                        if (now.getCode().equals("200") && (now != null)) {
                             //Utils.log("实时天气:\t" + now.getNow().toString());
                             //Utils.toast("成功");
                             new SaveWeather(new Main(), s).saveWeather_Now_Data();
@@ -57,7 +59,7 @@ public class HttpWeatherGet {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (day.getCode().equals("200")) {
+                        if (day.getCode().equals("200") && day != null) {
                             for (int i = 0; i < day.getDaily().size(); i++) {
                                 //Utils.log("三天 第:" + (i + 1) + "天:\t" + day.getDaily().get(i).toString());
                             }
@@ -84,7 +86,7 @@ public class HttpWeatherGet {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (day.getCode().equals("200")) {
+                        if (day.getCode().equals("200") && day != null) {
                             for (int i = 0; i < day.getDaily().size(); i++) {
                                 //Utils.log("七天 第:" + (i + 1) + "天:\t" + day.getDaily().get(i).toString());
                             }
@@ -111,7 +113,7 @@ public class HttpWeatherGet {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (day.getCode().equals("200")) {
+                        if (day.getCode().equals("200") && day != null) {
                             //Utils.log("获取城市:" + "\t" + day.getLocation().toString());
                             //Utils.toast("成功");
                             new SaveWeather(s).saveWeather_City_Data();
@@ -136,12 +138,67 @@ public class HttpWeatherGet {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (day.getCode().equals("200")) {
+                        if (day.getCode().equals("200") && day != null) {
                             for (int i = 0; i < day.getHourly().size(); i++) {
                                 //Utils.log("逐小时天气 第:" + (i + 1) + "个" + "\t" + day.getHourly().toString());
                             }
                             //Utils.toast("成功");
                             new SaveWeather(s).saveWeather_Hours_Data();
+                        } else {
+                            Utils.log(day.getCode());
+                            Utils.toast("失败");
+                        }
+                    }
+                });
+            }
+        });
+        thread.start();
+    }
+
+    /**
+     * 生活指数
+     */
+    public static void HttpGetLive(AppCompatActivity activity, String location) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String s = HttpUtil.OkHttpRequest(HttpUtil.url_live, location);
+                Gson gson = new Gson();
+                Weather_Bean_Live day = gson.fromJson(s, Weather_Bean_Live.class);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (day.getCode().equals("200") && day != null) {
+                            //Utils.toast("成功");
+                            new SaveWeather(s).saveWeather_Live_Data();
+                            Utils.log(s);
+                        } else {
+                            Utils.log(day.getCode());
+                            Utils.toast("失败");
+                        }
+                    }
+                });
+            }
+        });
+        thread.start();
+    }
+    /**
+     * aqi
+     */
+    public static void HttpGetAqi(AppCompatActivity activity, String location) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String s = HttpUtil.OkHttpRequest(HttpUtil.url_aqi, location);
+                Gson gson = new Gson();
+                Weather_Bean_Aqi day = gson.fromJson(s, Weather_Bean_Aqi.class);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (day.getCode().equals("200") && day != null) {
+                            //Utils.toast("成功");
+                            new SaveWeather(s).saveWeather_Aqi_Data();
+                            Utils.log(s);
                         } else {
                             Utils.log(day.getCode());
                             Utils.toast("失败");

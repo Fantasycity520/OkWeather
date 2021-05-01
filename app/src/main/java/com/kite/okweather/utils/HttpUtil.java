@@ -14,6 +14,8 @@ public class HttpUtil {
     public static String url_7Day = "https://devapi.qweather.com/v7/weather/7d?location=";
     public static String url_hours = "https://devapi.qweather.com/v7/weather/24h?location=";
     public static String url_city = "https://geoapi.qweather.com/v2/city/lookup?location=";
+    public static String url_live = "https://devapi.qweather.com/v7/indices/1d?type=0&location=";
+    public static String url_aqi = "https://devapi.qweather.com/v7/air/now?location=";
 
     //异步网络请求
     public static void sendOkHttpRequest(String address, Callback callBack) {

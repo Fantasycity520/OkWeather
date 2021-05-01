@@ -8,8 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kite.okweather.beans.Db_Bean_3Day;
 import com.kite.okweather.beans.Db_Bean_7Day;
+import com.kite.okweather.beans.Db_Bean_Aqi;
 import com.kite.okweather.beans.Db_Bean_City;
 import com.kite.okweather.beans.Db_Bean_Hours;
+import com.kite.okweather.beans.Db_Bean_Live;
 import com.kite.okweather.beans.Db_Bean_Now;
 import com.kite.okweather.broadcast.HttpGetBroadcast;
 import com.kite.okweather.ui.activity.Main;
@@ -28,7 +30,6 @@ public class SaveWeather {
     AppCompatActivity activity;
 
     int res = 0;
-
 
 
     public SaveWeather(String string) {
@@ -95,7 +96,6 @@ public class SaveWeather {
     public synchronized void saveWeather_Hours_Data() {
         Log.d(TAG, "saveWeather_Hours_Data: ");
 
-
         List<Db_Bean_Hours> list = LitePal.findAll(Db_Bean_Hours.class);
         Db_Bean_Hours dbBeanHours = new Db_Bean_Hours();
 
@@ -124,6 +124,47 @@ public class SaveWeather {
             dbBeanCity.save();
         } else {
             dbBeanCity.setCity(string);
+            dbBeanCity.setId(0);
+            dbBeanCity.updateAll("id = 1");
+        }
+    }
+
+    /**
+     * 保存生活指数
+     */
+    public synchronized void saveWeather_Live_Data() {
+        Log.d(TAG, "saveWeather_City_Data: ");
+
+        List<Db_Bean_Live> list = LitePal.findAll(Db_Bean_Live.class);
+        Db_Bean_Live dbBeanCity = new Db_Bean_Live();
+
+
+        if (list.size() == 0) {
+            dbBeanCity.setLive(string);
+            dbBeanCity.setId(0);
+            dbBeanCity.save();
+        } else {
+            dbBeanCity.setLive(string);
+            dbBeanCity.setId(0);
+            dbBeanCity.updateAll("id = 1");
+        }
+    }
+
+    /**
+     * 保存Aqi
+     */
+    public synchronized void saveWeather_Aqi_Data() {
+        Log.d(TAG, "saveWeather_City_Data: ");
+
+        List<Db_Bean_Aqi> list = LitePal.findAll(Db_Bean_Aqi.class);
+        Db_Bean_Aqi dbBeanCity = new Db_Bean_Aqi();
+
+        if (list.size() == 0) {
+            dbBeanCity.setAqi(string);
+            dbBeanCity.setId(0);
+            dbBeanCity.save();
+        } else {
+            dbBeanCity.setAqi(string);
             dbBeanCity.setId(0);
             dbBeanCity.updateAll("id = 1");
         }

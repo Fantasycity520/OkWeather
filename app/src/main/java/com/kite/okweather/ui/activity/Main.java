@@ -2,9 +2,11 @@ package com.kite.okweather.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
@@ -47,8 +49,8 @@ public class Main extends BaseActivity {
         list = LitePal.findAll(Db_Bean_City_List.class);
         my_city_lists = LitePal.findAll(Db_Bean_My_City_List.class);
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_main, new Fg_Main()).commit();
-    }
 
+    }
 
     @Override
     protected void initData() {

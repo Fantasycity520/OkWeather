@@ -3,6 +3,7 @@ package com.kite.okweather.beans;
 import org.litepal.crud.LitePalSupport;
 
 public class Db_Bean_3Day extends LitePalSupport {
+
     int id;
     String day3;
 

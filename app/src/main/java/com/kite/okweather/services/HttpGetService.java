@@ -38,6 +38,8 @@ public class HttpGetService extends Service {
         HttpWeatherGet.HttpGet7Day(new Main(), data);
         HttpWeatherGet.HttpGetCity(new Main(), data);
         HttpWeatherGet.HttpGetHours(new Main(), data);
+        HttpWeatherGet.HttpGetAqi(new Main(), data);
+        HttpWeatherGet.HttpGetLive(new Main(), data);
     }
 
     @Override

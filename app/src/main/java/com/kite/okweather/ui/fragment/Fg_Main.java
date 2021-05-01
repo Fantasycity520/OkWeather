@@ -21,6 +21,8 @@ import com.kite.okweather.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Fg_Main extends BaseFragment {
 
@@ -33,6 +35,7 @@ public class Fg_Main extends BaseFragment {
     public Fg_Main(Db_Bean_My_City_List db_bean_my_city) {
         this.db_bean_my_city = db_bean_my_city;
     }
+
     public Fg_Main() {
 
     }
@@ -43,10 +46,14 @@ public class Fg_Main extends BaseFragment {
         getFocus();
     }
 
-    //监听返回
-    int i = 0;
 
+    static int i = 0;
+
+    /*
+     *  监听返回
+     */
     private void getFocus() {
+
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
         getView().setOnKeyListener(new View.OnKeyListener() {
@@ -56,7 +63,14 @@ public class Fg_Main extends BaseFragment {
                     // 监听到返回按钮点击事件
                     //ActivityCollector.finishAll();
                     if (i == 0) {
-                        Utils.toast("再次点击返回");
+                        //Utils.toast("双击返回");
+                        Timer timer = new Timer();
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                i = 0;
+                            }
+                        }, 1000);
                     }
                     if (i >= 1) {
                         Log.d(TAG, "onKey: " + i);
@@ -79,11 +93,16 @@ public class Fg_Main extends BaseFragment {
     protected void initView(View view) {
         title_city = view.findViewById(R.id.title_city);
         title_city.setOnClickListener(this);
+
         view_pager(view);
+
         bottom();
+
         bing_pic_img = view.findViewById(R.id.bing_pic_img);
-        bing_pic_img.setImageAlpha(230);
-        loadBingPic();
+        bing_pic_img.setImageAlpha(240);
+        Glide.with(getActivity()).load("http://195.133.53.243:8080/05_Stu/web/bi_main_01.png").into(bing_pic_img);
+
+        //loadBingPic();
     }
 
     @Override
@@ -112,6 +131,9 @@ public class Fg_Main extends BaseFragment {
                 break;
         }
     }
+
+
+    //网络加载图片
     private void loadBingPic() {
         String reques_Bing = "https://www.talklee.com/api/bing/";
         String reques_Bing2 = "http://fly.atlinker.cn/api/bing/1920-cn.php";
@@ -119,6 +141,11 @@ public class Fg_Main extends BaseFragment {
         Glide.with(getActivity()).load(reques_Bing2).into(bing_pic_img);
 
     }
+
+    /**
+     * 初始化VIewPager
+     * @param view
+     */
     private void view_pager(View view) {
         viewpager_main = view.findViewById(R.id.viewpager_main);
         List<Fragment> list = new ArrayList<>();

@@ -44,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 //        setContentView(R.layout.activity_main);  //直接在本类获取布局
         ActivityCollector.addActivity(this);
         getSupportActionBar().hide();
+
         //以下是自己定义的方法，自己可以随便定义方法
 
         //获取并初始化视图或控件

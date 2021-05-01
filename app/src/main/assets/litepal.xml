@@ -14,6 +14,8 @@
         <mapping class="com.kite.okweather.beans.Db_Bean_City_List" />
         <mapping class="com.kite.okweather.beans.Db_Bean_My_City_List" />
         <mapping class="com.kite.okweather.beans.Db_City" />
+        <mapping class="com.kite.okweather.beans.Db_Bean_Aqi" />
+        <mapping class="com.kite.okweather.beans.Db_Bean_Live" />
     </list>
 
 </litepal>
