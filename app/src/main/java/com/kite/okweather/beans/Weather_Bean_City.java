@@ -2,9 +2,11 @@ package com.kite.okweather.beans;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.litepal.crud.LitePalSupport;
+
 import java.util.List;
 
-public class Weather_Bean_City {
+public class Weather_Bean_City extends LitePalSupport {
 
     @SerializedName("code")
     private String code;

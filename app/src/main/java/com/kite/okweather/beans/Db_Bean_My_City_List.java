@@ -6,6 +6,20 @@ import org.litepal.crud.LitePalSupport;
 
 public class Db_Bean_My_City_List extends LitePalSupport {
 
+    /**
+     * 用于保存我的城市列表
+     */
+
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @SerializedName("cityId")
     private String cityId;
     @SerializedName("province")
@@ -65,5 +79,18 @@ public class Db_Bean_My_City_List extends LitePalSupport {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    @Override
+    public String toString() {
+        return "Db_Bean_My_City_List{" +
+                "id=" + id +
+                ", cityId='" + cityId + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", district='" + district + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                '}';
     }
 }

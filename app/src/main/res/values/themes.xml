@@ -14,8 +14,17 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="FastStartTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/first_img</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="AppTheme" parent="XUITheme.Phone">
+        <!-- Customize your own theme style -->
+        <item name="colorPrimary">@color/xui_config_color_main_theme</item>
+        <item name="colorPrimaryDark">@color/xui_config_color_main_theme</item>
+        <item name="colorAccent">@color/xui_config_color_main_theme</item>
+    </style>
+
 </resources>

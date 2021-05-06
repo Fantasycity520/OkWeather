@@ -24,7 +24,7 @@ import java.util.List;
 
 public class Utils {
 
-    static Context context = BaseActivity.context;
+    static Context context = BaseActivity.activity.getApplicationContext();
     private static final String TAG = "Utils---->";
 
     public static void log(String str) {

@@ -1,5 +1,4 @@
-package com.kite.okweather.utils;
-
+package com.kite.okweather.ui_2.base;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,28 +8,13 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kite.okweather.utils.ActivityCollector;
 import com.xuexiang.xui.XUI;
 
-import org.litepal.LitePal;
-
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
-
-    public static AppCompatActivity activity;
-    /*
-            switch (v.getId()) {
-            case :
-                break;
-            default:
-                break;
-            }
-    */
+public abstract class BaseActivity_Ui_02 extends AppCompatActivity implements View.OnClickListener {
 
     public static Context context;
-
-    public void onBackPressed() {
-        ActivityCollector.finishAll();
-        onDestroy();
-    }
+    public static AppCompatActivity activity;
 
     @Override
     protected void onDestroy() {
@@ -44,12 +28,13 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         XUI.init((Application) getApplicationContext());
         XUI.debug(true);
-        LitePal.getDatabase();
+
         //在这里面可以定义自己需要的方法了，定义的方法可以在子类里面实现，这就是基类，自定义Activity
         context = getApplicationContext();
+        activity = this;
+
         //填充布局，填充主方法的布局，可以创建方法在子类里获取布局，也可以直接在本类获取布局
         setContentView(layoutResID());  //创建方法在子类里获取布局
 //        setContentView(R.layout.activity_main);  //直接在本类获取布局
@@ -92,4 +77,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      */
     protected abstract void initSp();
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }

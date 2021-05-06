@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#000"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
             android:scaleType="fitXY"
             tools:ignore="ContentDescription" />
 
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/llayout_main"
             android:layout_width="match_parent"
             android:layout_height="37dp"
@@ -35,7 +34,15 @@
                 android:src="@drawable/title_01_02"
                 tools:ignore="ContentDescription" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tv_fg_main_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/title_01_02"
+                tools:ignore="ContentDescription" />
+
+        </FrameLayout>
 
         <!--            主页面-->
         <androidx.viewpager2.widget.ViewPager2
@@ -52,4 +59,4 @@
     </FrameLayout>
 
 
-</LinearLayout>
+</FrameLayout>

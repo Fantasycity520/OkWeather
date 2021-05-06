@@ -19,26 +19,49 @@
         tools:ignore="UselessParent">
 
         <LinearLayout
-            android:background="#E6E6FA"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:background="#E6E6FA"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/item_city_01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="淮南"
-                android:textColor="#000"
-                android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="5"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/item_city_02"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/item_city_01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="淮南"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/item_city_02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="中国 安徽 淮南"
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/item_btu_de"
+                style="@style/Button.Blue"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="中国 安徽 淮南"
-                android:textColor="#000"
-                android:textSize="13sp" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="刪除" />
 
         </LinearLayout>
 

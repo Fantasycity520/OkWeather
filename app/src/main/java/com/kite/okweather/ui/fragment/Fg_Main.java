@@ -1,5 +1,6 @@
 package com.kite.okweather.ui.fragment;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -35,6 +36,7 @@ public class Fg_Main extends BaseFragment {
     public Fg_Main(Db_Bean_My_City_List db_bean_my_city) {
         this.db_bean_my_city = db_bean_my_city;
     }
+
 
     public Fg_Main() {
 
@@ -74,6 +76,7 @@ public class Fg_Main extends BaseFragment {
                     }
                     if (i >= 1) {
                         Log.d(TAG, "onKey: " + i);
+
                         ActivityCollector.finishAll();
                     }
                     i++;
@@ -98,9 +101,10 @@ public class Fg_Main extends BaseFragment {
 
         bottom();
 
-        bing_pic_img = view.findViewById(R.id.bing_pic_img);
-        bing_pic_img.setImageAlpha(240);
-        Glide.with(getActivity()).load("http://195.133.53.243:8080/05_Stu/web/bi_main_01.png").into(bing_pic_img);
+//        bing_pic_img = view.findViewById(R.id.bing_pic_img);
+//        bing_pic_img.setImageAlpha(240);
+//        bing_pic_img.setBackgroundColor(Color.rgb(112, 128, 144));
+        //Glide.with(getActivity()).load("http://195.133.53.243:8080/05_Stu/web/bi_main_01.png").into(bing_pic_img);
 
         //loadBingPic();
     }
@@ -144,12 +148,13 @@ public class Fg_Main extends BaseFragment {
 
     /**
      * 初始化VIewPager
+     *
      * @param view
      */
     private void view_pager(View view) {
         viewpager_main = view.findViewById(R.id.viewpager_main);
         List<Fragment> list = new ArrayList<>();
-        list.add(new Fg_01(db_bean_my_city));
+        list.add(new Fg_01(db_bean_my_city, view));
         list.add(new Fg_02());
         Adapter_ViewPager2 adapter_viewPager2 = new Adapter_ViewPager2(getActivity().getSupportFragmentManager(), getLifecycle(), list);
         viewpager_main.setAdapter(adapter_viewPager2);

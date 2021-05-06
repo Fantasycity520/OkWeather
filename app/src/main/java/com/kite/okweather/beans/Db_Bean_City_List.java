@@ -6,6 +6,10 @@ import org.litepal.crud.LitePalSupport;
 
 public class Db_Bean_City_List extends LitePalSupport {
 
+    /**
+     * 应用于存储全国所有城市列表
+     */
+
     @SerializedName("cityId")
     private String cityId;
     @SerializedName("province")

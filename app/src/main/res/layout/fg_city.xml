@@ -25,16 +25,19 @@
             android:src="@drawable/title_return"
             tools:ignore="ContentDescription" />
 
-        <EditText
-            android:singleLine="true"
+        <TextView
             android:id="@+id/ed_title"
-            android:gravity="center_horizontal"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="15"
-            android:hint="请输入城市" />
+            android:gravity="center"
+            android:hint="text" />
 
         <ImageView
             android:id="@+id/im_title_add"
@@ -46,11 +49,11 @@
             tools:ignore="ContentDescription,RtlHardcoded" />
 
         <ImageView
-            android:layout_marginLeft="10dp"
             android:id="@+id/im_title_location"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="right|center_vertical"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1.5"
             android:src="@drawable/title_location"
             tools:ignore="ContentDescription,RtlHardcoded" />

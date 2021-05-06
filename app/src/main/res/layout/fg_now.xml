@@ -7,6 +7,7 @@
     android:layout_margin="15dp">
 
     <TextView
+        style="@style/AppTheme"
         android:id="@+id/degree_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,6 +16,7 @@
         android:textSize="60sp" />
 
     <TextView
+        style="@style/AppTheme"
         android:id="@+id/weather_info_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
