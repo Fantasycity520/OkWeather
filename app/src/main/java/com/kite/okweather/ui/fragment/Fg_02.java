@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -22,6 +23,7 @@ import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.kite.okweather.R;
 import com.kite.okweather.beans.Db_Bean_City_List;
 import com.kite.okweather.beans.Db_Bean_My_City_List;
+import com.kite.okweather.beans.Db_User;
 import com.kite.okweather.beans.Weather_Bean_7Day;
 import com.kite.okweather.beans.Weather_Bean_Hours;
 import com.kite.okweather.ui.activity.Main;
@@ -51,6 +53,7 @@ public class Fg_02 extends BaseFragment {
 
     WeatherBg bg;
     LineChart line;
+    TextView test_tv;
 
     @Override
     protected int initLayout() {
@@ -59,22 +62,14 @@ public class Fg_02 extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-//        line = view.findViewById(R.id.lineChart_01);
-//        bg = view.findViewById(R.id.bg);
-//        bg.changeWeather("heavyRainy");
+        test_tv = view.findViewById(R.id.test_tv);
+        test_tv.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-//        Weather_Bean_7Day day7 = Fg_01.day7;
-//        List<Float> list_y = new ArrayList<>();
-//        List<Float> list_x = new ArrayList<>();
-//
-//        for (int i = 0; i < day7.getDaily().size(); i++) {
-//            list_y.add(Float.valueOf(day7.getDaily().get(i).getTempMax()));
-//            list_x.add(Float.valueOf(i));
-//        }
-//        testChart(list_x, list_y);
+        Db_User user = LitePal.findAll(Db_User.class).get(0);
+        test_tv.setText(user.getAdmin() + "\n" + user.getPassword() + "\n" + "积分:" + user.getJifen());
     }
 
     @Override
@@ -89,12 +84,16 @@ public class Fg_02 extends BaseFragment {
 
     @Override
     public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.btn_test:
-//
-//
-//                break;
-//    }
+        switch (v.getId()) {
+            case R.id.test_tv:
+                Db_User user = LitePal.findAll(Db_User.class).get(0);
+                int i = user.getJifen();
+                i++;
+                user.setJifen(i);
+                user.update(0);
+                Utils.toast( LitePal.findAll(Db_User.class).get(0).getJifen());
+                break;
+        }
 
     }
 

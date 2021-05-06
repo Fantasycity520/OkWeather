@@ -18,6 +18,7 @@ import com.kite.okweather.ui.activity.Main;
 import com.kite.okweather.utils.BaseActivity;
 import com.kite.okweather.utils.HttpWeatherGet;
 import com.kite.okweather.utils.Utils;
+import com.xuexiang.xui.widget.toast.XToast;
 
 import org.litepal.LitePal;
 
@@ -83,7 +84,7 @@ public class HttpGetService extends Service {
 
     @Override
     public void onCreate() {
-
+        XToast.success(BaseActivity.context, "服务启动中").show();
     }
 
     @Override

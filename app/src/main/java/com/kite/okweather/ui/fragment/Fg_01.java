@@ -36,6 +36,7 @@ import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.utils.WidgetUtils;
 import com.xuexiang.xui.widget.dialog.BaseDialog;
 import com.xuexiang.xui.widget.dialog.MiniLoadingDialog;
+import com.xuexiang.xui.widget.toast.XToast;
 
 import org.litepal.LitePal;
 
@@ -199,10 +200,11 @@ public class Fg_01 extends BaseFragment {
     public void showData() {
         if (LitePal.findAll(Db_Save_Data.class).size() == 0) {
             SwipeRefreshLayout_01.setRefreshing(false);
-            Utils.toast("出错");
+            //Utils.toast("出错");
+            XToast.info(BaseActivity.context, "出错").show();
         } else {
             showData_02();
-            Utils.toast("成功");
+            XToast.success(BaseActivity.context, "成功").show();
         }
     }
 

@@ -18,6 +18,7 @@ import com.kite.okweather.beans.Db_Bean_My_City_List;
 import com.kite.okweather.broadcast.HttpGetBroadcast;
 import com.kite.okweather.ui.fragment.Fg_City;
 import com.kite.okweather.ui.fragment.Fg_Main;
+import com.kite.okweather.ui.fragment.Fg_Ui_login;
 import com.kite.okweather.utils.BaseActivity;
 import com.kite.okweather.utils.Utils;
 import com.rainy.weahter_bg_plug.WeatherBg;
@@ -35,7 +36,6 @@ public class Main extends BaseActivity {
 
     //用于判断是否刷新 天气逻辑
     public static int ii = 0;
-
     BottomNavigationView main_bottom;
 
     public static List<Db_Bean_City_List> list;
@@ -65,7 +65,7 @@ public class Main extends BaseActivity {
         list = LitePal.findAll(Db_Bean_City_List.class);
         my_city_lists = LitePal.findAll(Db_Bean_My_City_List.class);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_main, new Fg_Main()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_main, new Fg_Ui_login()).commit();
 
         main_bottom = findViewById(R.id.main_bottom);
         main_bottom.setBackgroundColor(Color.rgb(112, 128, 144));
